@@ -1,4 +1,5 @@
 # 神岛数据统计 MCP 服务器
+[![smithery badge](https://smithery.ai/badge/@box3lab/statistics-mcp)](https://smithery.ai/server/@box3lab/statistics-mcp)
 
 基于 Model Context Protocol (MCP) 的服务器，提供对神岛平台用户数据、地图信息和统计数据的访问。
 
@@ -105,3 +106,4 @@ const statsData = JSON.parse(mapStats.content[0].text);
 ## 许可证
 
 MIT
+
