@@ -18,13 +18,13 @@
 
 ### 公开 API (无需认证)
 
-| 工具名称            | 描述                     | 参数                                                     |
-| ------------------- | ------------------------ | -------------------------------------------------------- |
-| `getUserProfile`    | 获取用户个人资料         | `userId`                                                 |
-| `getMapInfo`        | 获取地图详情信息         | `mapId`                                                  |
-| `getMapCommentList` | 获取地图评论列表         | `contentId`, `limit`, `offset`, `orderBy`, `contentType` |
-| `getMapReleaseInfo` | 获取地图发布信息         | `contentId`, `limit`, `offset`                           |
-| `getMapList`        | 获取神岛平台用户地图列表 | `keyword`, `limit`, `offset` ,`orderBy`                  |
+| 工具名称            | 描述                       | 参数                                                     |
+| ------------------- | -------------------------- | -------------------------------------------------------- |
+| `getUserProfile`    | 获取用户个人资料           | `userId`                                                 |
+| `getMapInfo`        | 获取地图详情信息           | `mapId`                                                  |
+| `getMapCommentList` | 获取地图评论列表           | `contentId`, `limit`, `offset`, `orderBy`, `contentType` |
+| `getMapReleaseInfo` | 获取地图发布信息           | `contentId`, `limit`, `offset`                           |
+| `getMapList`        | 通过模糊关键字获取地图列表 | `keyword`, `limit`, `offset` ,`orderBy`                  |
 
 ### 需要认证的 API
 
