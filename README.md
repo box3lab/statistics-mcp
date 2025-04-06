@@ -1,4 +1,5 @@
 # 神岛数据统计 MCP 服务器
+[![smithery badge](https://smithery.ai/badge/@box3lab/statistics-mcp)](https://smithery.ai/server/@box3lab/statistics-mcp)
 
 [![smithery badge](https://smithery.ai/badge/@box3lab/statistics-mcp)](https://smithery.ai/server/@box3lab/statistics-mcp)
 
@@ -158,3 +159,11 @@ npm start
 - Model Context Protocol (MCP)
 - Zod (类型验证)
 - Axios (HTTP 请求)
+<<<<<<< HEAD
+=======
+
+## 许可证
+
+MIT
+
+>>>>>>> 7e98914285367b903e3d0ac058faf787ecf4420d
