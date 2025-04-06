@@ -124,26 +124,6 @@ const statsData = JSON.parse(mapStats.content[0].text);
 └── README.md               # 项目文档
 ```
 
-## 开发指南
-
-### 安装依赖
-
-```bash
-npm install
-```
-
-### 构建项目
-
-```bash
-npm run build
-```
-
-### 运行服务器
-
-```bash
-npm start
-```
-
 ## 添加新的 API 端点
 
 要添加新的 API 端点，请按照以下步骤操作：
@@ -158,11 +138,7 @@ npm start
 - Model Context Protocol (MCP)
 - Zod (类型验证)
 - Axios (HTTP 请求)
-  <<<<<<< HEAD
-  =======
 
 ## 许可证
 
 MIT
-
-> > > > > > > 7e98914285367b903e3d0ac058faf787ecf4420d
