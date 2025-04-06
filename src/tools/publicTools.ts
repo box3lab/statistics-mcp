@@ -89,7 +89,7 @@ export function registerPublicTools(server: McpServer) {
         ),
     },
     async ({ offset, limit, keyword, orderBy }, extra) => {
-      const endpoint = `map/tab/maps?offset=${offset}&limit=${limit}&keyword=${keyword}&orderBy=${orderBy}`;
+      const endpoint = `/map/tab/maps?offset=${offset}&limit=${limit}&keyword=${keyword}&orderBy=${orderBy}`;
       return await makeApiRequest(endpoint);
     }
   );
