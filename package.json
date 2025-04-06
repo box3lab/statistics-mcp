@@ -1,28 +1,41 @@
 {
   "name": "@dao3fun/statistics-mcp",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "description": "神岛平台数据统计MCP服务，提供用户资料、地图信息和统计数据访问",
   "main": "build/index.js",
   "type": "module",
   "scripts": {
     "start": "node build/index.js",
-    "build": "tsc && chmod 755 build/index.js"
+    "dev": "tsc -w",
+    "build": "tsc && chmod 755 build/index.js",
+    "clean": "rm -rf build",
+    "rebuild": "npm run clean && npm run build"
   },
   "keywords": [
     "mcp",
     "神岛",
-    "box3lab"
+    "box3lab",
+    "statistics",
+    "数据统计"
   ],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "box3lab",
+  "license": "MIT",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
     "@modelcontextprotocol/sdk": "^1.8.0",
     "axios": "^1.8.4",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
     "typescript": "^5.8.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dao3fun/statistics-mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/dao3fun/statistics-mcp/issues"
   }
 }

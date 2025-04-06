@@ -1,12 +1,16 @@
 # 神岛数据统计 MCP 服务器
 
+[![smithery badge](https://smithery.ai/badge/@box3lab/statistics-mcp)](https://smithery.ai/server/@box3lab/statistics-mcp)
+
 基于 Model Context Protocol (MCP) 的服务器，提供对神岛平台用户数据、地图信息和统计数据的访问。
 
 ## 功能特点
 
-- **公开 API**: 无需认证访问的基础数据（用户资料、地图详情）
-- **认证 API**: 需要 Token 访问的高级数据（评论列表、各类统计数据）
+- **公开 API**: 无需认证访问的基础数据（用户资料、地图详情、评论列表）
+- **认证 API**: 需要 Token 访问的高级数据（用户评论、各类统计数据）
 - **地图分析**: 全面的地图玩家数据、留存率、行为分析等
+- **类型安全**: 完整的 TypeScript 类型定义，提供代码提示和错误检查
+- **模块化设计**: 清晰的代码结构，易于维护和扩展
 - **标准接口**: 基于 MCP 协议，提供标准化的工具接口
 - **易于集成**: 支持多平台客户端集成，包括浏览器、CLI 等
 
@@ -14,10 +18,12 @@
 
 ### 公开 API (无需认证)
 
-| 工具名称         | 描述             | 参数     |
-| ---------------- | ---------------- | -------- |
-| `getUserProfile` | 获取用户个人资料 | `userId` |
-| `getMapInfo`     | 获取地图详情信息 | `mapId`  |
+| 工具名称            | 描述             | 参数                                                     |
+| ------------------- | ---------------- | -------------------------------------------------------- |
+| `getUserProfile`    | 获取用户个人资料 | `userId`                                                 |
+| `getMapInfo`        | 获取地图详情信息 | `mapId`                                                  |
+| `getMapCommentList` | 获取地图评论列表 | `contentId`, `limit`, `offset`, `orderBy`, `contentType` |
+| `getMapReleaseInfo` | 获取地图发布信息 | `contentId`, `limit`, `offset`                           |
 
 ### 需要认证的 API
 
@@ -61,7 +67,7 @@ const userProfile = await client.callTool({
 // 获取地图详情 (公开API)
 const mapInfo = await client.callTool({
   name: "getMapInfo",
-  arguments: { mapId: "12345" },
+  arguments: { mapId: "100131463" },
 });
 
 console.log(JSON.parse(userProfile.content[0].text));
@@ -85,15 +91,66 @@ const mapStats = await client.callTool({
   },
 });
 
+// 获取地图玩家留存率 (需要认证)
+const retention = await client.callTool({
+  name: "getMapPlayerRetention",
+  arguments: {
+    startTime: "2025-03-29",
+    endTime: "2025-04-04",
+    mapId: "100131463",
+    token,
+    userAgent,
+  },
+});
+
 // 处理响应
 const statsData = JSON.parse(mapStats.content[0].text);
 ```
 
 ## 项目结构
 
-- `index.ts`: 主服务器代码
-- `tsconfig.json`: TypeScript 配置
-- `package.json`: 项目依赖
+```
+├── index.ts                # 主入口文件
+├── src/                    # 源代码目录
+│   ├── types/              # 类型定义
+│   │   └── index.ts        # 共享类型定义
+│   ├── utils/              # 工具函数
+│   │   └── api.ts          # API请求工具
+│   └── tools/              # MCP工具实现
+│       ├── publicTools.ts  # 公开API工具
+│       └── authTools.ts    # 需要认证的API工具
+├── package.json            # 项目配置和依赖
+├── tsconfig.json           # TypeScript配置
+└── README.md               # 项目文档
+```
+
+## 开发指南
+
+### 安装依赖
+
+```bash
+npm install
+```
+
+### 构建项目
+
+```bash
+npm run build
+```
+
+### 运行服务器
+
+```bash
+npm start
+```
+
+## 添加新的 API 端点
+
+要添加新的 API 端点，请按照以下步骤操作：
+
+1. 在 `src/types/index.ts` 中添加新的类型定义（如需要）
+2. 对于公开 API，在 `src/tools/publicTools.ts` 中添加新的工具定义
+3. 对于需要认证的 API，在 `src/tools/authTools.ts` 中添加新的工具定义
 
 ## 技术栈
 
@@ -101,7 +158,3 @@ const statsData = JSON.parse(mapStats.content[0].text);
 - Model Context Protocol (MCP)
 - Zod (类型验证)
 - Axios (HTTP 请求)
-
-## 许可证
-
-MIT
