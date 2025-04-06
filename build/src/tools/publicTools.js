@@ -46,4 +46,18 @@ export function registerPublicTools(server) {
         const endpoint = `/map/release-info/${contentId}?limit=${limit}&offset=${offset}`;
         return await makeApiRequest(endpoint);
     });
+    /**
+     * 地图列表API
+     */
+    server.tool("getMapList", "获取神岛平台用户地图列表", {
+        offset: z.number().describe("偏移量"),
+        limit: z.number().describe("查询数量"),
+        keyword: z.string().describe("关键词"),
+        orderBy: z
+            .number()
+            .describe("排序方式，0：官方推荐:最热，1：最新, 2:当通过keyword查找地图时使用"),
+    }, async ({ offset, limit, keyword, orderBy }, extra) => {
+        const endpoint = `map/tab/maps?offset=${offset}&limit=${limit}&keyword=${keyword}&orderBy=${orderBy}`;
+        return await makeApiRequest(endpoint);
+    });
 }
