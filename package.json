@@ -1,6 +1,6 @@
 {
   "name": "@dao3fun/statistics-mcp",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "神岛平台数据统计MCP服务，提供用户资料、地图信息和统计数据访问",
   "main": "build/index.js",
   "type": "module",

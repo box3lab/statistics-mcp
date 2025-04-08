@@ -44,7 +44,7 @@ export function registerPublicTools(server: McpServer) {
     "获取神岛平台用户地图评论列表",
     {
       contentId: z.string().describe("地图ID"),
-      limit: z.number().describe("查询数量"),
+      limit: z.number().describe("查询数量，最多100条"),
       offset: z.number().describe("偏移量"),
       orderBy: z.number().describe("排序方式，1创建时间倒序；4热度（默认）"),
       contentType: z.number().describe("评论分类，1地图，2模型"),
@@ -63,7 +63,7 @@ export function registerPublicTools(server: McpServer) {
     "获取神岛平台用户地图发布信息",
     {
       contentId: z.string().describe("地图ID"),
-      limit: z.number().describe("查询数量"),
+      limit: z.number().describe("查询数量，最多100条"),
       offset: z.number().describe("偏移量"),
     },
     async ({ contentId, limit, offset }, extra) => {
@@ -80,7 +80,7 @@ export function registerPublicTools(server: McpServer) {
     "获取神岛平台用户地图列表",
     {
       offset: z.number().describe("偏移量"),
-      limit: z.number().describe("查询数量"),
+      limit: z.number().describe("查询数量，最多100条"),
       keyword: z.string().describe("关键词"),
       orderBy: z
         .number()
