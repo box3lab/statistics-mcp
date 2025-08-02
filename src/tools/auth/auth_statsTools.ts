@@ -1,15 +1,8 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { makeApiRequest, createAuthHeaders } from "../utils/api.js";
-import { StatsEndpoint } from "../types/index.js";
+import { makeApiRequest, createAuthHeaders } from "../../utils/api.js";
+import { StatsEndpoint } from "../../types/index.js";
 import { z } from "zod";
-
-/**
- * 通用认证参数
- */
-const authParams = {
-  token: z.string().describe("认证Token"),
-  userAgent: z.string().describe("用户请求头"),
-};
+import { authParams } from "./index.js";
 
 /**
  * 统计相关工具的通用参数
@@ -53,27 +46,7 @@ const mapStatsEndpoints: StatsEndpoint[] = [
  * 注册需要认证的API工具
  * @param server MCP服务器实例
  */
-export function registerAuthTools(server: McpServer) {
-  /**
-   * 获取评论列表
-   */
-  server.tool(
-    "getCommentList",
-    "获取神岛平台用户的评论列表，需要Token和用户请求头",
-    {
-      offset: z.number().describe("偏移量"),
-      limit: z.number().describe("限制数量"),
-      ...authParams,
-    },
-    async ({ offset, limit, token, userAgent }, extra) => {
-      const headers = createAuthHeaders(token, userAgent);
-      return await makeApiRequest(
-        `/msg/comment?offset=${offset}&limit=${limit}`,
-        headers
-      );
-    }
-  );
-
+export function registerAuthStatsTools(server: McpServer) {
   /**
    * 获取地图统计列表
    */

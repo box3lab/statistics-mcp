@@ -1,10 +1,11 @@
 {
-  "name": "@dao3fun/statistics-mcp",
-  "version": "0.0.3",
+  "name": "@box3lab/statistics-mcp",
+  "version": "0.0.4",
   "description": "神岛平台数据统计MCP服务，提供用户资料、地图信息和统计数据访问",
   "main": "build/index.js",
   "type": "module",
   "scripts": {
+    "publish": "npm publish",
     "start": "node build/index.js",
     "dev": "tsc -w",
     "build": "tsc && chmod 755 build/index.js",
@@ -33,9 +34,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dao3fun/statistics-mcp"
+    "url": "https://github.com/box3lab/statistics-mcp"
   },
   "bugs": {
-    "url": "https://github.com/dao3fun/statistics-mcp/issues"
+    "url": "https://github.com/box3lab/statistics-mcp/issues"
   }
 }
